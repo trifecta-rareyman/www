@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<!-- <html lang="en" class="dark"> -->
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="./favicon-16x16.png"
+		/>
+		<link rel="stylesheet" href="./styles/index.css" />
+		<script
+			src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+			defer
+		></script>
+		<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+		<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+		<title>Midia Study Schedule</title>
+		<style></style>
+	</head>
+
+	<body class="antialiased" x-data="{ mode: 'schedule' }">
+		<div class="grid-schedule">
+			<!-- heading -->
+			<div class="grid-heading">
+				<!-- <div class="w-[60.25rem]"> -->
+				<div class="pt-6 px-36">
+					<!-- schedule -->
+					<div class="text-center" x-show="mode === 'schedule' ">
+						<h1 class="">
+							Midia Study Schedule of Assessments Quick Reference Grid
+						</h1>
+						<p class="pt-1 text-xs tracking-wide">JUNE 2021 | VERSION 1.0</p>
+					</div>
+					<!-- legend -->
+					<div x-show="mode === 'legend' ">
+						<!-- <h1 class="w-[70rem]"> -->
+						<h1 class="">
+							Midia Study Schedule of Assessments Quick Reference Definitions
+						</h1>
+						<p class="pt-1 text-xs tracking-wide">
+							Use the grid to reference the meanings of the icons on the other
+							side of this card.
+						</p>
+					</div>
+					<!-- help -->
+					<div class="absolute top-0 right-0 mt-6 mr-10">
+						<a
+							href="#"
+							@click="mode === 'legend' ? mode = 'schedule' : mode = 'legend'"
+							@keyup.escape.window="mode === 'legend' ? mode = 'schedule' : null"
+						>
+							<div x-show="mode === 'schedule' ">
+								<?xml version="1.0" encoding="UTF-8"?>
+								<svg
+									class="w-10 h-10 text-blue-300 fill-current"
+									version="1.1"
+									viewBox="0 0 100 100"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="m50 13c-9.8125 0-19.223 3.8984-26.164 10.836-6.9375 6.9414-10.836 16.352-10.836 26.164s3.8984 19.223 10.836 26.164c6.9414 6.9375 16.352 10.836 26.164 10.836s19.223-3.8984 26.164-10.836c6.9375-6.9414 10.836-16.352 10.836-26.164s-3.8984-19.223-10.836-26.164c-6.9414-6.9375-16.352-10.836-26.164-10.836zm-0.30078 54.57c-1.207 0.30078-2.4727-0.15625-3.2109-1.1602-0.73438-1.0039-0.78906-2.3516-0.13672-3.4102 0.40625-0.72656 1.0938-1.2539 1.8984-1.4609 1.6562-0.37891 3.3086 0.65625 3.6914 2.3125 0.19531 0.78125 0.070313 1.6094-0.35156 2.2969-0.41406 0.70703-1.0977 1.2188-1.8906 1.4219zm3.4102-17c-1.5 0.46094-1.4688 0.62109-1.4688 2.3086-0.027344 0.66797-0.32422 1.2969-0.82031 1.7461-0.49609 0.44531-1.1523 0.67578-1.8203 0.63672-0.69922 0.058593-1.3906-0.19141-1.8984-0.67969-0.50391-0.48828-0.77734-1.168-0.74219-1.8711 0 0 0.070313-3.5703 0.070313-4.6719 0-0.76172 1-1 2.3203-1.1914 5.2812-1 6.4688-6.7109 2.5898-8.1992-2.2305-0.85938-4.3594-0.58984-7.5703 2.4883v0.003906c-1.1016 1.1797-2.8984 1.3828-4.2383 0.48047-1.1406-0.92188-0.55078-2.9219 0.19922-3.8594 5.1406-6.4492 13.551-5.1094 16.078-3.3086v-0.003906c2.1992 1.4531 3.6133 3.8359 3.832 6.4609 0.44531 4.3789-2.3047 8.4453-6.5312 9.668z"
+									/>
+								</svg>
+							</div>
+
+							<div x-show="mode === 'legend' ">
+								<?xml version="1.0" encoding="UTF-8"?>
+								<svg
+									class="w-10 h-10 text-blue-300 fill-current"
+									version="1.1"
+									viewBox="0 0 100 100"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="m50 8.332c-11.051 0-21.648 4.3906-29.461 12.207-7.8164 7.8125-12.207 18.41-12.207 29.461s4.3906 21.648 12.207 29.461c7.8125 7.8164 18.41 12.207 29.461 12.207s21.648-4.3906 29.461-12.207c7.8164-7.8125 12.207-18.41 12.207-29.461s-4.3906-21.648-12.207-29.461c-7.8125-7.8164-18.41-12.207-29.461-12.207zm15.445 51.223c0.80469 0.77734 1.2617 1.8438 1.2734 2.9609 0.007812 1.1172-0.42969 2.1914-1.2227 2.9805-0.78906 0.79297-1.8633 1.2305-2.9805 1.2227-1.1172-0.011719-2.1836-0.46875-2.9609-1.2734l-9.5547-9.5547-9.5547 9.5547c-1.6328 1.5781-4.2344 1.5586-5.8398-0.050781-1.6094-1.6055-1.6289-4.207-0.050781-5.8398l9.5547-9.5547-9.5547-9.5547c-1.5781-1.6328-1.5586-4.2344 0.050781-5.8398 1.6055-1.6094 4.207-1.6289 5.8398-0.050781l9.5547 9.5547 9.5547-9.5547c1.6328-1.5781 4.2344-1.5586 5.8398 0.050781 1.6094 1.6055 1.6289 4.207 0.050781 5.8398l-9.5547 9.5547z"
+									/>
+								</svg>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- visits -->
+			<!-- schedule -->
+			<div
+				x-show="mode === 'schedule' "
+				class="grid-visit-heading drop-shadow-xl filter"
+			>
+				<div class="text-2xl font-semibold text-gray-300 visit-heading-item">
+					Visit
+				</div>
+				<div class="visit-heading-item">1</div>
+				<div class="visit-heading-item">2</div>
+				<div class="visit-heading-item">3</div>
+				<div class="visit-heading-item">4</div>
+				<div class="visit-heading-item">5</div>
+				<div class="visit-heading-item">6</div>
+				<div class="visit-heading-item">7</div>
+				<div class="visit-heading-item">8</div>
+				<div class="visit-heading-item">9</div>
+				<div class="visit-heading-item">10</div>
+				<div class="visit-heading-item">11</div>
+				<div class="visit-heading-item">12/ET</div>
+				<div class="visit-heading-item">13</div>
+			</div>
+			<!-- legend		 -->
+			<div
+				x-show="mode === 'legend' "
+				class="h-8 grid-visit-heading drop-shadow-lg"
+			></div>
+			<!-- content -->
+			<div class="relative overflow-auto content">
+				<!-- schedule -->
+				<div class="grid-content-schedule">
+					<div class="visit-content-item"></div>
+					<div class="pt-4 visit-content-item">
+						<div>
+							<img
+								id="item-1-1"
+								class="cursor-pointer icon"
+								src="images/05-obtain-consent.svg"
+								alt=""
+							/>
+							<div id="item-1-1-tip" style="display: none">
+								<h3 class="tooltip-title">Obtain Informed Consent</h3>
+								<p class="tooltip-content"></p>
+							</div>
+						</div>
+						<div>
+							<img
+								id="item-1-2"
+								class="cursor-pointer icon"
+								src="images/06-surgical-history.svg"
+								alt=""
+							/>
+							<div id="item-1-2-tip" style="display: none">
+								<h3 class="tooltip-title">
+									Obtain Medication, Medical </br>and Surgical History
+								</h3>
+								<p class="tooltip-content"></p>
+							</div>
+						</div>
+						<div><img src="images/17-hypertension-history.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/09-measure-bp.svg" alt="" /></div>
+						<div><img src="images/03-perform-examination.svg" alt="" /></div>
+						<div><img src="images/02-perform-ecg.svg" alt="" /></div>
+						<div><img src="images/19-blood-urine.svg" alt="" /></div>
+						<div><img src="images/18-pregancy-serum.svg" alt="" /></div>
+						<div><img src="images/14-review-iclusion.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+					</div>
+					<div class="pt-4 bg-gray-900 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/14-review-iclusion.svg" alt="" /></div>
+						<div><img src="images/11-discontinue-meds.svg" alt="" /></div>
+						<div><img src="images/09-measure-bp.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/14-review-iclusion.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 bg-gray-900 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/14-review-iclusion.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/14-review-iclusion.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 bg-gray-900 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/19-blood-urine.svg" alt="" /></div>
+						<div><img src="images/14-review-iclusion.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 bg-gray-900 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 bg-gray-900 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 visit-content-item">
+						<div><img src="images/15-confirm-taken-meds.svg" alt="" /></div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+					<div class="pt-4 bg-gray-900 visit-content-item">
+						<div>
+							<img
+								id="item-12-1"
+								class="cursor-pointer icon"
+								src="images/15-confirm-taken-meds.svg"
+								alt=""
+							/>
+							<div id="item-12-1-tip" style="display: none">
+								<h3 class="tooltip-title">Confirm patient has not taken restricted medications and has complied with the smoking/alcohol/caffeine restrictions</h3>
+								<p class="tooltip-content">
+								</p>
+							</div>
+						</div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/03-perform-examination.svg" alt="" /></div>
+						<div><img src="images/19-blood-urine.svg" alt="" /></div>
+						<div><img src="images/18-pregancy-serum.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div><img src="images/04-dispense-meds.svg" alt="" /></div>
+						<div><img src="images/20-one-tablet-one-capsule.svg" alt="" /></div>
+						<div><img src="images/01-schedule-patient.svg" alt="" /></div>
+						<div><img src="images/16-not-taken-meds.svg" alt="" /></div>
+					</div>
+					<div class="pt-4 visit-content-item">
+						<div>
+							<img
+								id="item-13-1"
+								class="cursor-pointer icon"
+								src="images/15-confirm-taken-meds.svg"
+								alt=""
+							/>
+							<div id="item-13-1-tip" style="display: none">
+								<h3 class="tooltip-title">Confirm patient has not taken restricted medications and has complied with the smoking/alcohol/caffeine restrictions</h3>
+								<p class="tooltip-content">
+								</p>
+							</div>
+						</div>
+						<div><img src="images/08-collect-meds.svg" alt="" /></div>
+						<div><img src="images/12-review-meds.svg" alt="" /></div>
+						<div><img src="images/21-review-record.svg" alt="" /></div>
+						<div><img src="images/13-provide-omoron.svg" alt="" /></div>
+						<div><img src="images/07-contact-ivrs.svg" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+						<div class=""><img src="" alt="" /></div>
+					</div>
+				</div>
+				<!-- legend -->
+				<div
+					class="absolute top-0 left-0 grid-content-legend"
+					style="height: -webkit-fill-available"
+					x-show="mode === 'legend' "
+					x-transition:enter="transition ease-out duration-300"
+					x-transition:enter-start="opacity-0 transform "
+					x-transition:enter-end="opacity-100 transform"
+					x-transition:leave="transition ease-in duration-300"
+					x-transition:leave-start="opacity-100 transform "
+					x-transition:leave-end="opacity-0 transform "
+				>
+					<div class="pt-4 text-sm font-normal bg-gray-800 legend-col">
+						<div>
+							<img
+								src="images/05-obtain-consent.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">Obtain informed consent</p>
+						</div>
+						<div>
+							<img
+								src="images/06-surgical-history.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">
+								Obtain Medication, Medical and <br />Surgical history
+							</p>
+						</div>
+						<div>
+							<img
+								src="images/17-hypertension-history.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">Review Concominant Medications</p>
+						</div>
+						<div>
+							<img src="images/12-review-meds.svg" class="pl-2 pr-4" alt="" />
+							<p class="text-left">
+								Measure Seated Cuff BP <br />and Other Vital Signs
+							</p>
+						</div>
+						<div>
+							<img src="images/09-measure-bp.svg" class="pl-2 pr-4" alt="" />
+							<p class="text-left">Perform Physical Examination</p>
+						</div>
+						<div>
+							<img
+								src="images/03-perform-examination.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">Perform a 6–lead or 12–lead ECG</p>
+						</div>
+						<div>
+							<img src="images/02-perform-ecg.svg" class="pl-2 pr-4" alt="" />
+							<p class="text-left">
+								Measure Seated Cuff BP <br />and Other Vital Signs
+							</p>
+						</div>
+						<div>
+							<img src="images/19-blood-urine.svg" class="pl-2 pr-4" alt="" />
+							<p class="text-left">
+								Collect Blood and Urine Samples <br />for Clinical Labs
+							</p>
+						</div>
+					</div>
+					<div class="pt-4 text-sm font-normal bg-gray-800 legend-col">
+						<div>
+							<img
+								src="images/18-pregancy-serum.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">
+								Perform Serum Pregnacy Test for <br />Women of Child-bearing
+								Potential
+							</p>
+						</div>
+						<div>
+							<img
+								src="images/14-review-iclusion.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">Review Inclusion/Exclusion Criteria</p>
+						</div>
+						<div>
+							<img src="images/07-contact-ivrs.svg" class="pl-2 pr-4" alt="" />
+							<p class="text-left">Contact IVRS and Print Confirmation</p>
+						</div>
+
+						<div>
+							<img
+								src="images/01-schedule-patient.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">
+								Schedule Patient to Return for <br />Next Study Visit at 8am +/-
+								90 minutes
+							</p>
+						</div>
+						<div>
+							<img src="images/21-review-record.svg" class="pl-2 pr-4" alt="" />
+							<p class="text-left">Review and Record Adverse Events</p>
+						</div>
+						<div>
+							<img
+								src="images/16-not-taken-meds.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">
+								Remind Patient to Not Take Restricted Medications on the Morning
+								of the Next Visit, Not to Take Any Prohibited Con-meds Within 48
+								hrs of the Visit or to Consume Caffeine, Excercise, or Smoke
+								within 2 hrs of the Visit
+							</p>
+						</div>
+					</div>
+					<div class="pt-4 text-sm font-normal bg-gray-800 legend-col">
+						<div>
+							<img
+								src="images/15-confirm-taken-meds.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">
+								Confirm patient Has Not Taken Restricted Medications and Has
+								Complied With the Smoking/Alcohol/Caffeine Restrictions
+							</p>
+						</div>
+						<div>
+							<img
+								src="images/11-discontinue-meds.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">
+								Advise Patient to Discontinue Antihypertensive Medications
+							</p>
+						</div>
+						<div>
+							<img
+								src="images/13-provide-omoron.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">
+								Provide Omoron Device for Home BP Monitoring
+							</p>
+						</div>
+						<div>
+							<img src="images/04-dispense-meds.svg" class="pl-2 pr-4" alt="" />
+							<p class="text-left">
+								Dispense Study Medication Per IVRS, <br />Administer Study
+								Medication From Newly Dispensed Blister Card
+							</p>
+						</div>
+						<div>
+							<img
+								src="images/20-one-tablet-one-capsule.svg"
+								class="pl-2 pr-4"
+								alt=""
+							/>
+							<p class="text-left">
+								Instruct Patient to Take One Tablet and One Capsule Daily
+								Between 8am and 10am
+							</p>
+						</div>
+						<div>
+							<img src="images/08-collect-meds.svg" class="pl-2 pr-4" alt="" />
+							<p class="text-left">
+								Collect Unused Study Medication/Assess Drug Coplience
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- weeks -->
+			<!-- schedule -->
+			<div x-show="mode === 'schedule' ">
+				<div
+					class="pt-10 bg-gradient-to-b filter drop-shadow-lg from-gray-600 via-gray-900 to-gray-900"
+				>
+					<div
+						class="flex flex-row items-center justify-center text-lg text-white grid-weeks"
+					>
+						<div class="text-2xl font-semibold text-gray-300 weeks-item">
+							Week
+						</div>
+						<div class="weeks-item">
+							<span class="mt-1 font-bold text-gray-300">–</span>
+							<div id="dot-5" class="bg-gray-600 cursor-pointer dot circle">
+								5
+							</div>
+							<div id="dot-5-tip" style="display: none">
+								<h3 class="text-lg tooltip-title">Week's Schedule</h3>
+								<div class="flex pt-2 tooltip-content">
+									<a
+										href="./files/week-one-schedule.pdf"
+										class="flex pt-2 text-xs"
+										target="_new"
+									>
+										Download Schedule
+										<img
+											src="images/pdf-icon.svg"
+											alt=""
+											class="h-10 pl-1 cursor-pointer"
+										/>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="weeks-item">
+							<span class="mt-1 font-bold text-gray-300">–</span>
+							<div class="bg-[#947E8D] circle">4</div>
+						</div>
+						<div class="weeks-item">
+							<span class="mt-1 font-bold text-gray-300">–</span>
+							<div class="bg-[#A97483] circle">3</div>
+						</div>
+						<div class="weeks-item">
+							<span class="mt-1 font-bold text-gray-300">–</span>
+							<div class="bg-[#BD6A79] circle">2</div>
+						</div>
+						<div class="weeks-item">
+							<span class="mt-1 font-bold text-gray-300">–</span>
+							<div class="bg-[#D2606F] circle">1</div>
+						</div>
+						<div class="weeks-item">
+							<div class="bg-red-600 circle">0</div>
+						</div>
+						<div class="weeks-item">
+							<div class="bg-[#CB5C5E] circle">2</div>
+						</div>
+						<div class="weeks-item">
+							<div class="bg-[#B06157] circle">4</div>
+						</div>
+						<div class="weeks-item">
+							<div class="bg-[#956750] circle">6</div>
+						</div>
+						<div class="weeks-item">
+							<div class="bg-[#796C49] circle">8</div>
+						</div>
+						<div class="weeks-item">
+							<div class="bg-[#5E7242] circle">10</div>
+						</div>
+						<div class="weeks-item">
+							<div class="bg-[#43773B] circle">12</div>
+						</div>
+						<div class="weeks-item">
+							<div class="bg-green-700 circle">13</div>
+						</div>
+					</div>
+					<div class="pt-4 text-sm text-center text-gray-400">
+						Click a week number or visit number to view or print a Visit
+						Checklist
+					</div>
+				</div>
+			</div>
+			<!-- legend -->
+			<div x-show="mode === 'legend' ">
+				<div
+					class="h-8 bg-gradient-to-b filter drop-shadow-lg from-gray-600 via-gray-900 to-gray-900"
+				></div>
+				<div class="py-4">
+					<p class="text-xs tracking-wide px-36">JUNE 2021 | VERSION 1.0</p>
+				</div>
+			</div>
+		</div>
+
+		<script src="./scripts/index.js"></script>
+	</body>
+</html>

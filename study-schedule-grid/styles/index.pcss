@@ -1,0 +1,243 @@
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@tailwind base;
+/**
+ * This injects Tailwind's component classes and any component classes
+ * registered by plugins.
+ */
+@tailwind components;
+/**
+ * This injects Tailwind's utility classes and any utility classes registered
+ * by plugins.
+ */
+@tailwind utilities;
+/**
+ * Use this directive to control where Tailwind injects the responsive
+ * variations of each utility.
+ *
+ * If omitted, Tailwind will append these classes to the very end of
+ * your stylesheet by default.
+ */
+/* @tailwind screens; */
+
+/**
+* Tailwind will automatically move any CSS within a @layer directive
+* to the same place as the corresponding tailwind rule, so you don’t
+* have to worry as much about authoring your CSS in a specific order
+* to avoid specificity issues.
+*/
+
+@layer base {
+	/* add base styles here */
+	/* fonts
+	============================================================================= */
+	/* https://web.dev/variable-fonts/ */
+	/* https://variablefonts.io/implementing-variable-fonts/#self-hosting */
+	/* https://fonts.google.com/specimen/Libre+Franklin */
+	/* ========================================================================== */
+	/* LibreFranklin-Variable */
+	/* ========================================================================== */
+	@font-face {
+		font-display: swap;
+		font-family: 'LibreFranklin-Variable';
+		/* font-stretch: 25% 151%; */
+		font-weight: 100 900;
+		src: url('./fonts/LibreFranklin-VariableFont_wght.woff2')
+				format('woff2 supports variations'),
+			url('./fonts/LibreFranklin-VariableFont_wght.woff2')
+				format('woff2-variations');
+	}
+
+	h1 {
+		@apply text-4xl tracking-tighter;
+		font-weight: 900;
+	}
+
+	p {
+		/* font-size: 12px;
+		font-weight: bold;
+		text-align: right; */
+	}
+}
+
+@layer components {
+	/* add component styles here */
+	/* grid layout */
+	.grid-schedule {
+		@apply justify-center text-white bg-gray-900;
+		display: grid;
+		width: 100vw;
+		height: 100vh;
+		/* justify-content: center;
+		background-color: #2c404d; */
+		grid-template-columns: 100%;
+		grid-template-rows: 100px 50px 1fr 120px;
+		/* text-align: center; */
+	}
+
+	/* STANDARD GRID CONTENT
+	============================================================================= */
+
+	/* .grid-visit-heading, */
+	.grid-content-schedule {
+		@apply flex flex-row items-start justify-center overflow-auto text-lg text-center text-white bg-gray-900 bg-gradient-to-b;
+	}
+
+	.visit-heading-item,
+	.visit-content-item,
+	.weeks-item {
+		flex: 1;
+		text-align: center;
+	}
+
+	.grid-visit-heading {
+		@apply z-50 flex flex-row items-center justify-center h-16 text-lg text-center align-middle bg-gradient-to-b from-gray-700 via-gray-900 to-gray-900;
+	}
+
+	.visit-content-item > div {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+		padding-top: 0.6rem;
+		/* border: 1px solid green; */
+		padding-bottom: 0.6rem;
+		/* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+		@apply border-b border-gray-800;
+	}
+
+	.grid-weeks {
+		@apply flex flex-row items-center justify-center text-lg text-white;
+	}
+
+	.visit-heading-item,
+	.visit-content-item {
+		@apply flex flex-row justify-center text-2xl font-semibold text-center text-gray-300;
+		/* display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-item: center; */
+	}
+
+	.visit-content-item {
+		flex-direction: column;
+		justify-content: start;
+		background-color: #18222c;
+	}
+
+	.visit-content-item img {
+		height: 38px;
+	}
+	.visit-content-item img.icon {
+		@apply transition duration-[400ms] ease-in-out transform-gpu scale-100;
+	}
+	.visit-content-item img.icon.expand {
+		@apply scale-125;
+	}
+
+	.weeks-item div.dot {
+		@apply transition duration-[400ms] ease-in-out transform-gpu scale-100;
+	}
+
+	.weeks-item div.dot.expand {
+		@apply scale-125;
+	}
+
+	.weeks-item {
+		@apply flex flex-row justify-center align-middle drop-shadow-lg filter;
+	}
+
+	.circle {
+		@apply flex flex-row items-center justify-center ml-1 text-xl font-bold rounded-full w-9 h-9;
+	}
+
+	.gray-circle {
+		@apply flex flex-row items-center justify-center ml-1 text-xl font-bold text-gray-800 bg-gray-400 rounded-full w-9 h-9;
+	}
+
+	.white-circle {
+		@apply flex flex-row items-center justify-center text-xl font-bold text-gray-800 bg-white rounded-full w-9 h-9;
+	}
+
+	/* LEGEND GRID CONTENT
+	============================================================================= */
+	.grid-content-legend {
+		@apply flex flex-row items-start justify-center overflow-auto text-lg text-center text-white bg-gray-800 bg-gradient-to-b px-36;
+	}
+
+	.legend-col {
+		flex: 1;
+		text-align: center;
+	}
+
+	.legend-col > div {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-content: left;
+		align-items: left;
+		justify-content: left;
+		padding-top: 0.6rem;
+		/* border: 1px solid green; */
+		padding-bottom: 0.6rem;
+		/* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+		/* @apply border-b border-gray-800; */
+	}
+
+	.legend-col img {
+		height: 38px;
+	}
+}
+
+@layer utilities {
+	/* add utility styles here */
+}
+
+/**
+* The `@screen` directive allows you to create media queries that reference
+* your breakpoints by name instead of duplicating their values in your own CSS.
+*/
+
+@screen sm {
+	/* add sm variants here */
+}
+@screen md {
+	/* add md variants here */
+}
+@screen lg {
+	/* add lg variants here */
+}
+@screen xl {
+	/* add xl variants here */
+}
+
+/*
+	TippyJS
+	https://atomiks.github.io/tippyjs/v6/themes/
+*/
+
+.tippy-box[data-theme~='wcgtrifecta'],
+.tippy-box[data-theme~='wcgtrifecta-week'] {
+	@apply p-3 bg-blue-900;
+}
+
+.tippy-box[data-theme~='wcgtrifecta'] .tippy-arrow,
+.tippy-box[data-theme~='wcgtrifecta-week'] .tippy-arrow {
+	@apply text-blue-900;
+}
+
+.tippy-box[data-theme~='wcgtrifecta-week'] {
+	@apply w-56;
+}
+
+.tooltip-title {
+	@apply font-bold;
+}
+
+.tooltip-content {
+	@apply text-xs;
+}
